@@ -96,10 +96,8 @@ test("clicking toggle will show details for given item", function(assert) {
 test('loading screen shown before xhr resolves with valid data', function(assert) {
   stubXhrWithTodos(json);
   visitSync('/');
-  Ember.run(function() {
-      var loading = find(".loading-gif");
-      assert.equal(loading.text(), "Loading...");
-  });
+  var loading = find(".loading-gif");
+  assert.equal(loading.text(), "Loading...");
   andThen(function() {
       var unassigned = find(".unassigned .cards");
       assert.equal(unassigned.length, 3);
@@ -109,10 +107,8 @@ test('loading screen shown before xhr resolves with valid data', function(assert
 test('loading screen shown before xhr resolves with no data', function(assert) {
   stubXhrWithTodos([]);
   visitSync('/');
-  Ember.run(function() {
-      var loading = find(".loading-gif");
-      assert.equal(loading.text(), "Loading...");
-  });
+  var loading = find(".loading-gif");
+  assert.equal(loading.text(), "Loading...");
   andThen(function() {
       var no_data = find(".no-data-found");
       assert.equal(no_data.text(), "No data available");
@@ -122,10 +118,8 @@ test('loading screen shown before xhr resolves with no data', function(assert) {
 test('detail loading screen shown before xhr resolves with valid data', function(assert) {
   stubXhrWithTodos(json);
   visitSync('/todo/1');
-  Ember.run(function() {
-      var loading = find(".loading-details-gif");
-      assert.equal(loading.text(), "Loading details...");
-  });
+  var loading = find(".loading-details-gif");
+  assert.equal(loading.text(), "Loading details...");
   andThen(function() {
       var projectInput = find(".details_section input.project");
       assert.equal(projectInput.val(), "first");
@@ -135,10 +129,8 @@ test('detail loading screen shown before xhr resolves with valid data', function
 test('detail loading screen shown before xhr resolves with no data', function(assert) {
   stubXhrWithTodos([]);
   visitSync('/todo/1');
-  Ember.run(function() {
-      var loading = find(".loading-details-gif");
-      assert.equal(loading.text(), "Loading details...");
-  });
+  var loading = find(".loading-details-gif");
+  assert.equal(loading.text(), "Loading details...");
   andThen(function() {
       var no_data = find(".no-detail-data-found");
       assert.equal(no_data.text(), "No detail model data");
